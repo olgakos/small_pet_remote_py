@@ -1,3 +1,26 @@
+.pytest_cache
+.idea
+.idea/workspace.xml
+.log
+
+#My Note's Folder
+docs/
+
+.env
+.log
+*.log
+
+# Allure
+allure-results/
+allure-report/
+.allure-results/
+.allure-report/
+tests/allure-results
+./tests/allure-results
+allure/plugins
+/allure/
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
