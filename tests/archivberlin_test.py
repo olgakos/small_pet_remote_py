@@ -25,6 +25,7 @@ def test1rem(setup_browser):
     with allure.step("В поле ввода пусто"):
         browser.element('.search-field').should(be.blank)
 
+
 @allure.tag('web')
 @allure.severity(Severity.NORMAL)
 @allure.label('owner', 'Olga')
@@ -35,9 +36,9 @@ def test2loc():
 
     value = 'Das Landesarchiv Berlin'
 
-    with allure.step("Open home page"):
+    with allure.step("Open home page2"):
         browser.open('/')
-    with allure.step("Кнопка лупа"):
+    with allure.step("Кнопка лупа2"):
         browser.element('.search-toggle').click()
-    with allure.step("В поле ввода пусто"):
+    with allure.step("В поле ввода пусто2"):
         browser.element('.search-field').should(be.blank)
