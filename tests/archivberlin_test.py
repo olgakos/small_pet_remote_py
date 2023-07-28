@@ -8,6 +8,8 @@ from tests.conftest import URL_LINK_ALLURE
 
 URL_LINK_ALLURE = 'https://landesarchiv-berlin.de'
 
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(file)))
+                
 @allure.tag('web')
 @allure.severity(Severity.NORMAL)
 @allure.label('owner', 'Olga')
