@@ -34,8 +34,8 @@ def test1():
 def test2():
     with allure.step("Open home page2"):
         browser.open('http://landesarchiv-berlin.de')
-    with allure.step("Перейти на английский"):
-        browser.open('/en/the-landesarchiv-berlin')
+    # with allure.step("Перейти на английский"):
+        # browser.open('/en/the-landesarchiv-berlin')
     with allure.step("Заголовок"):
         browser.element('h1.post-title').should(have.text("The Landesarchiv Ber­lin"))
     with allure.step("Cсылка"):
