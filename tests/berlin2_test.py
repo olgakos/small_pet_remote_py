@@ -6,20 +6,23 @@ from selene.support.conditions import be
 import pytest
 from allure_commons._allure import step
 
+
 @allure.tag('web')
 @allure.severity(Severity.NORMAL)
 @allure.label('owner', 'Olga')
 @allure.feature(f'Проверка1')
 @allure.story('Стори1')
 @allure.link('https://landesarchiv-berlin.de', name="Link to Home Page")
-def test1rem():
-    value = 'Das Landesarchiv Berlin'
+def test1():
+
+    value = 'Standesamt I in Berlin'
+
     with allure.step("Open home page"):
         browser.open('http://landesarchiv-berlin.de')
-    with allure.step("Кнопка лупа"):
+    with allure.step("Нажать кнопку лупа"):
         browser.element('.search-toggle').click()
-    with allure.step("В поле ввода пусто"):
-        browser.element('.search-field').should(be.blank)
+    with allure.step("Ввести запрос"):
+        browser.element('.search-field').should(be.blank).type(value).press_enter()
 
 
 @allure.tag('web')
@@ -28,11 +31,12 @@ def test1rem():
 @allure.feature(f'Проверка1')
 @allure.story('Стори1')
 @allure.link('https://landesarchiv-berlin.de', name="Link to Home Page")
-def test2loc():
-    value = 'Das Landesarchiv Berlin'
+def test2():
     with allure.step("Open home page2"):
         browser.open('http://landesarchiv-berlin.de')
-    with allure.step("Кнопка лупа2"):
-        browser.element('.search-toggle').click()
-    with allure.step("В поле ввода пусто2"):
-        browser.element('.search-field').should(be.blank)
+    with allure.step("Перейти на английский"):
+        browser.open('/en/the-landesarchiv-berlin')
+    with allure.step("Заголовок"):
+        browser.element('h1.post-title').should(have.text("The Landesarchiv Ber­lin"))
+    with allure.step("Cсылка"):
+        browser.element(by.link_text("Appointment reservation reading room")).should(be.visible)
