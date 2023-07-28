@@ -3,19 +3,16 @@ import os
 import pytest
 from dotenv import load_dotenv
 from selene.support.shared import browser
-from shop_book.utils import attach
+from utils import attach
 from selenium.webdriver.chrome.options import Options
 from selenium import webdriver
-
 
 @pytest.fixture(scope='session', autouse=True)
 def load_env():
     load_dotenv()
 
-
-
 @pytest.fixture(scope='function', autouse=True)
-def driver_managment_remote():
+def setup_browser():
     options = Options()
     selenoid_capabilities = {
         "browserName": "chrome",
@@ -37,10 +34,9 @@ def driver_managment_remote():
     browser.config.window_height = 800
 
     yield browser
+
     attach.add_html(browser)
     attach.add_screenshot(browser)
     attach.add_logs(browser)
     attach.add_video(browser)
     browser.quit()
-
-     #https://github.com/EvaOk85/Book_Shop_Diplom_UI_tests/blob/master/conftest.py
