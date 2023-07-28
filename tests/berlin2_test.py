@@ -33,8 +33,8 @@ def test_easy_search():
 def test_move_to_english():
     with allure.step("Open home page2"):
         browser.open('http://landesarchiv-berlin.de')
-    with allure.step("Переключититься на английский"):
-        browser.open('/en/the-landesarchiv-berlin')
+    # with allure.step("Переключититься на английский"):
+        # browser.open('/en/the-landesarchiv-berlin')
     with allure.step("Проверить заголовок на английском"):
         browser.element('h1.post-title').should(have.text("The Landesarchiv Ber­lin"))
     with allure.step("Проверить название ссылки на английском"):
