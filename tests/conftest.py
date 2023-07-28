@@ -39,4 +39,22 @@ def setup_browser():
     attach.add_screenshot(browser)
     attach.add_logs(browser)
     attach.add_video(browser)
+    
     browser.quit()
+
+
+#---------LOCAL------
+'''
+@pytest.fixture(scope='function', autouse=True)
+def browser_management():
+    browser.config.base_url = 'http://landesarchiv-berlin.de'
+    browser.config.window_width = 1920
+    browser.config.window_height = 1080
+    driver_options = webdriver.ChromeOptions()
+    #driver_options.add_argument('--headless')
+    browser.config.driver_options = driver_options
+
+    yield
+
+    browser.quit()
+'''
