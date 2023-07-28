@@ -8,6 +8,8 @@ from tests.conftest import URL_LINK_ALLURE
 
 URL_LINK_ALLURE = 'https://landesarchiv-berlin.de'
 
+# Строка sys.path.append добавляет родительский каталог каталога тестов в путь поиска модулей Python, 
+# что позволяет импортировать модули из корневой папки.
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(file)))
                 
 @allure.tag('web')
