@@ -6,12 +6,12 @@ small_pet_remote_py
 ## Site:
 * https://landesarchiv-berlin.de/
 
-![logo](images/screen-home.jpg)
+![logo](images/screen-home2.png)
 
 ## Tests:
 - [x] Basic search
 - [x] Article Search
-- [ ] Language change
+- [x] Language change to EN
 
 ## Technologies and tools
 <br>`Python` - programming language
@@ -42,7 +42,8 @@ allure\bin\allure.bat serve allure-results
 
 ------------
 ###### todo:
-* Fix language change test
 * Add tool's icons
+* Add parameterization 
+* Do refactoring
 
 ver 2023-08-01
