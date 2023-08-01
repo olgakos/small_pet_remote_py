@@ -3,13 +3,11 @@ from allure_commons.types import Severity
 from selene import browser, be, by, have
 from selene.support.shared import browser
 from selene.support.conditions import be
-import pytest
-from allure_commons._allure import step
 
 @allure.title('Search from the main page')
 @allure.tag('web')
 @allure.severity(Severity.NORMAL)
-@allure.label('owner', 'Olga')
+@allure.label('owner', 'Olga Kos')
 @allure.feature(f'Search')
 @allure.story('Basic search is available')
 @allure.link('https://landesarchiv-berlin.de', name="Link to Home Page")
@@ -27,7 +25,7 @@ def test_easy_search():
 @allure.title('Article Search')
 @allure.tag('web')
 @allure.severity(Severity.NORMAL)
-@allure.label('owner', 'Olga')
+@allure.label('owner', 'Olga Kos')
 @allure.feature(f'Articles')
 @allure.story('Article search is available')
 @allure.link('https://landesarchiv-berlin.de', name="Link to Home Page")
@@ -53,7 +51,7 @@ def test_check_text_deutch():
 @allure.title('Switch Language to English')
 @allure.tag('web')
 @allure.severity(Severity.NORMAL)
-@allure.label('owner', 'Olga')
+@allure.label('owner', 'Olga Kos')
 @allure.feature(f'English language')
 @allure.story('Switch language DE-EN is available')
 @allure.link('https://landesarchiv-berlin.de', name="Link to Home Page")
@@ -61,7 +59,7 @@ def test_move_to_english():
     with allure.step("Open home page"):
         browser.open('http://landesarchiv-berlin.de')
     with allure.step("Press EN icon"):
-        browser.open('/en/the-landesarchiv-berlin')
+        browser.element('#menu-item-9201-en').click()
     with allure.step("Check the title in English"):
         browser.element('h1.post-title').should(have.text("The Landesarchiv Ber­lin"))
     with allure.step("Check the link in English"):
