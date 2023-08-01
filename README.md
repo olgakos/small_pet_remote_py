@@ -1,19 +1,48 @@
-# small_pet_remote_py
+small_pet_remote_py
 
-### Вариант 1. Локальный запуск 
+# Landesarchiv Berlin
+![Company logo](images/LAB_Logo_2021_web-1-600x166-1.png)
 
-1. Скачать проект и открыть в среде разработки
-2. Запустить тесты командой из терминала 
+## Site:
+* https://landesarchiv-berlin.de/
+
+![logo](images/screen-home.jpg)
+
+## Tests:
+- [x] Basic search
+- [x] Article Search
+- [ ] Language change
+
+## Technologies and tools
+<br>`Python` - programming language
+<br>`Selene` - framework for testing
+<br>`Pytest` - for unit testing
+<br>`Jenkins` - CI/CD for running tests remotely
+<br>`Selenoid` - to launch browsers remotely in Docker container
+<br>`Allure Report` - to visualize test results
+<br>`Telegram Bot` - for test results notifications
+
+### Running tests from the terminal
+Run UI tests locally
 ```
 pytest . 
 ```
-3. Выполнить запрос на формирование отчета
-<br><b>note:</b> это команда для Windows
+### Running Allure Report from the terminal
+<b>note:</b> for Windows
 ``` 
 allure\bin\allure.bat serve allure-results
 ```
-Результат: откроется страница с отчетом Allure Report
 
-### Вариант 2. Удаленный запуск тестов (в Jenkins)
+### Remote start (Jenkins job)
 
 * https://jenkins.autotests.cloud/job/C02_OlgaKos_Python_small_pet_remote_py/
+
+### Integration with Telegram
+![telegram](images/screen-telegram.jpg)
+
+------------
+###### todo:
+* Fix language change test
+* Add tool's icons
+
+ver 2023-08-01
