@@ -6,12 +6,12 @@ from selene.support.conditions import be
 import pytest
 from allure_commons._allure import step
 
-
+@allure.title('Search from the main page')
 @allure.tag('web')
 @allure.severity(Severity.NORMAL)
 @allure.label('owner', 'Olga')
-@allure.feature(f'Поисковая строка')
-@allure.story('Стори1')
+@allure.feature(f'Search')
+@allure.story('Basic search is available')
 @allure.link('https://landesarchiv-berlin.de', name="Link to Home Page")
 def test_easy_search():
     
@@ -19,32 +19,17 @@ def test_easy_search():
 
     with allure.step("Open home page"):
         browser.open('http://landesarchiv-berlin.de')
-    with allure.step("Нажать кнопку лупа"):
+    with allure.step("Press the LOUPE button"):
         browser.element('.search-toggle').click()
-    with allure.step("Ввести запрос"):
+    with allure.step("To print a request"):
         browser.element('.search-field').should(be.blank).type(data1).press_enter()
 
+@allure.title('Article Search')
 @allure.tag('web')
 @allure.severity(Severity.NORMAL)
 @allure.label('owner', 'Olga')
-@allure.feature(f'Англоязычная версия')
-@allure.story('Story1')
-@allure.link('https://landesarchiv-berlin.de', name="Link to Home Page")
-def test_move_to_english():
-    with allure.step("Open home page2"):
-        browser.open('http://landesarchiv-berlin.de')
-    # with allure.step("Переключититься на английский"):
-        # browser.open('/en/the-landesarchiv-berlin')
-    with allure.step("Проверить заголовок на английском"):
-        browser.element('h1.post-title').should(have.text("The Landesarchiv Ber­lin"))
-    with allure.step("Проверить название ссылки на английском"):
-        browser.element(by.link_text("Appointment reservation reading room")).should(be.visible)
-
-@allure.tag('web')
-@allure.severity(Severity.NORMAL)
-@allure.label('owner', 'Olga')
-@allure.feature(f'Texts')
-@allure.story('Story1')
+@allure.feature(f'Articles')
+@allure.story('Article search is available')
 @allure.link('https://landesarchiv-berlin.de', name="Link to Home Page")
 def test_check_text_deutch():
     
@@ -54,13 +39,30 @@ def test_check_text_deutch():
 
     with allure.step("Open home page"):
         browser.open('http://landesarchiv-berlin.de')
-    with allure.step("Нажать кнопку лупа"):
+    with allure.step("Press the LOUPE button"):
         browser.element('.search-toggle').click()
-    with allure.step("Ввести запрос"):
+    with allure.step("To print a request"):
         browser.element('.search-field').should(be.blank).type(data1).press_enter()
-    with allure.step("Перейти по ссылке"):
+    with allure.step("Go to links"):
         browser.element('a[href="https://landesarchiv-berlin.de/standesamt-i-in-berlin"]').click()
-    with allure.step("Проверить подпись к фото"):
+    with allure.step("Check the photo caption"):
         # browser.element(".media-caption").should(have.text("Ozeandampfer Imperator, 1919"))
         browser.element(".media-caption").should(have.text(data2))
         browser.element(".media-caption").should(have.text(data3))
+
+@allure.title('Switch Language to English')
+@allure.tag('web')
+@allure.severity(Severity.NORMAL)
+@allure.label('owner', 'Olga')
+@allure.feature(f'English language')
+@allure.story('Switch language DE-EN is available')
+@allure.link('https://landesarchiv-berlin.de', name="Link to Home Page")
+def test_move_to_english():
+    with allure.step("Open home page"):
+        browser.open('http://landesarchiv-berlin.de')
+    with allure.step("Press EN icon"):
+        browser.open('/en/the-landesarchiv-berlin')
+    with allure.step("Check the title in English"):
+        browser.element('h1.post-title').should(have.text("The Landesarchiv Ber­lin"))
+    with allure.step("Check the link in English"):
+        browser.element(by.link_text("Appointment reservation reading room")).should(be.visible)

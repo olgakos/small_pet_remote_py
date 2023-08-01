@@ -23,7 +23,7 @@ def setup_browser():
         }
     }
     
-    options.add_experimental_option("prefs", {"intl.accept_languages": "de,de-DE"}) #!
+    options.add_experimental_option("prefs", {"intl.accept_languages": "de,de-DE"}) #! base language
     
     options.capabilities.update(selenoid_capabilities)
     
@@ -44,22 +44,23 @@ def setup_browser():
     attach.add_screenshot(browser)
     attach.add_logs(browser)
     attach.add_video(browser)
+
     browser.quit() 
 
 
-
-#---------LOCAL------
+#---------LOCAL------------
 '''
 @pytest.fixture(scope='function', autouse=True)
 def browser_management():
-    browser.config.base_url = 'http://landesarchiv-berlin.de'
+    browser.config.timeout = 3
+    browser.config.base_url = 'http://landesarchiv-berlin.de'    
     browser.config.window_width = 1920
     browser.config.window_height = 1080
     driver_options = webdriver.ChromeOptions()
     # driver_options.add_argument('--headless') #!
     browser.config.driver_options = driver_options
     
-    driver_options.add_experimental_option("prefs", {"intl.accept_languages": "de,de-DE"}) #!
+    driver_options.add_experimental_option("prefs", {"intl.accept_languages": "de,de-DE"}) #! base language
     # options.add_experimental_option("prefs", {"intl.accept_languages": "en,en_US"})
     # options.add_experimental_option("prefs", {"intl.accept_languages": "de,de-DE"})
     # chrome_options.add_argument("--lang=en")
@@ -67,6 +68,11 @@ def browser_management():
     # chrome_options.add_argument("--lang=en-US")    
    
     yield
+
+    attach.add_html(browser)
+    attach.add_screenshot(browser)
+    attach.add_logs(browser)
+    attach.add_video(browser)
 
     browser.quit()
 '''
